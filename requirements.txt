@@ -1,0 +1,15 @@
+langchain
+langchain-openai
+gradio
+chromadb
+tiktoken
+pypdf
+python-dotenv
+scikit-learn
+pandas
+umap-learn
+numpy
+flashrank
+unstructured[all-docs]
+pillow
+langchain-experimental
