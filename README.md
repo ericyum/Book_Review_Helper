@@ -1,9 +1,8 @@
 # Book_Review_Helper
 
-Phase 1: MVP 구축
+---
 
-
-1. 로더
+## 1. 로더
 
 로더를 PyPDFLoader로 정했는데 문제가 발생함.
 왼쪽 부터가 아니라 오른쪽부터 읽음
