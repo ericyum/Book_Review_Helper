@@ -96,6 +96,18 @@ def chat_with_doc(message, history, retriever, llm_choice):
     else:
         llm = ChatGoogleGenerativeAI(model="gemini-2.5-pro", temperature=0)
 
+    # [HyDE] 가설 답변(요약)을 생성하는 프롬프트/체인 추가
+    hyde_prompt = ChatPromptTemplate.from_template(
+        "아래 질문에 대해 문서가 있다고 가정하고, 질문에 대한 간결한 가설 답변을 한국어로 3~5문장으로 작성하세요.\n\n질문: {question}"
+    )
+    hyde_chain = (
+        {"question": itemgetter("question")}
+        | hyde_prompt
+        | llm
+        | StrOutputParser()
+    )
+    # [HyDE] 끝
+
     prompt = ChatPromptTemplate.from_template('''
     당신은 주어진 Context를 바탕으로 질문에 답하는 AI 어시스턴트입니다.
     Context에는 질문과 관련된 검색 내용이 들어 있습니다. 그 정보를 사용하여 간결하고 정확하게 답변해주세요.
@@ -104,9 +116,10 @@ def chat_with_doc(message, history, retriever, llm_choice):
     Context: {context}
     Question: {question}''')
     
+    # [HyDE] 기존: itemgetter("question") | retriever  →  변경: hyde_chain | retriever
     retrieval_chain = (
         {
-            "context": itemgetter("question") | retriever,
+            "context": hyde_chain | retriever,   # [HyDE] 가설 답변을 검색 질의로 사용
             "question": itemgetter("question"),
         }
         | RunnablePassthrough.assign(
@@ -121,6 +134,7 @@ def chat_with_doc(message, history, retriever, llm_choice):
             )
         )
     )
+    # [HyDE] 끝
 
     questions = [q.strip() for q in message.split('\n') if q.strip()]
     
