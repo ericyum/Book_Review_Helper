@@ -416,7 +416,7 @@ https://ai.google.dev/gemini-api/docs/document-processing?hl=ko
           수 있습니다.  
 
 
-![[Pasted image 20250905132150.png]]
+![images/스크린샷 2025-09-05 132146.png](images/스크린샷%202025-09-05%20132146.png)
   
 이외의 조건은 동일함  
   
@@ -490,6 +490,10 @@ https://ai.google.dev/gemini-api/docs/document-processing?hl=ko
  - **HyDE k (의미 검색)** : 10
  - **BM25 k (키워드 검색)** : 10
   
+
+### 실제 화면
+![images/스크린샷 2025-09-05 155313.png](images/스크린샷%202025-09-05%20155313.png)
+
   
   
 ```
