@@ -552,9 +552,7 @@ https://ai.google.dev/gemini-api/docs/document-processing?hl=ko
 ### 나의 실수  
 
 그래서 로더 상의 문제가 있는지 다시 한번 확인함.  
-
-![[Pasted image 20250905144420.png]]
-
+  
   
 **로더의 결과를 보니 Gemini로더가 책의 줄거리가 시작되는 부분을 인지하고 그 앞의 부분은 무시했음을 알 수 있었음. 7,8,9번 문제는 오히려 대답을 할 수 없었던 것이 '정답'이었음**  
   
